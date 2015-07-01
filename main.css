@@ -1,0 +1,44 @@
+body {
+	background-color: #FFFFFF;
+}
+
+.jumbotron {
+	color: blue;
+	text-align: center;
+	background-color: #D2B48C;
+}
+
+.custombutton {
+    width: 78px !important;
+}
+
+.textinput {
+	text-align: center;
+	font-size: medium;
+	font-weight: bold;
+}
+
+.inputbox {
+	width: 200px;
+	color: red;
+}
+
+.guessbutton{
+	margin-top:20px;
+    margin-bottom:80px;
+    padding: 16px 189px 1px 189px;
+    text-align: center;
+}
+
+h3 {
+	text-align: center;
+	color: blue;
+}
+
+.guessesremaining {
+	margin-bottom:80px;
+}
+
+.buttons {
+	text-align: center;
+}
