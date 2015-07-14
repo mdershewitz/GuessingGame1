@@ -32,11 +32,12 @@ body {
 
 h3 {
 	text-align: center;
-	color: blue;
+	color: red;
 }
 
 .guessesremaining {
 	margin-bottom:80px;
+	color: red;
 }
 
 .buttons {
