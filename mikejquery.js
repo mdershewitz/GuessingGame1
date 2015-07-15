@@ -3,12 +3,20 @@ $(document).ready(function() {
 	var counter = 5;
 	var targetnumber = Math.floor((Math.random() * 100) + 1);
 
+    $("#newGame").on('click', function () {
+    	$('#playerGuessButton').attr('disabled', false);
+    	guessarray = [];
+    	counter = 5;
+    	targetnumber = Math.floor((Math.random() * 100) + 1);
+    });
+
+
     $("#playersGuessButton").on('click', function() {
     	// Pull in the guess from the text box
         var guess =  $("#playersGuessText").val();
+        guess = parseInt(guess);
         // Check to make sure this is a number, and 1-100
-        alert(guess);
-     //   alert(guess);
+       // alert(guess);
         if (isNaN(guess)){ 
           alert("Error.  This must be a number!");
           throw "Error.  This must be a number!";
@@ -28,25 +36,52 @@ $(document).ready(function() {
        $("#guess-count").text(countString);
 
       // Update the status
-      var status = "";
+      var statusText = "";
+      alert("Target number is " + targetnumber);
+      alert("Type of guess is" + typeof(guess));
+      alert("Guess - target number = " + (guess - targetnumber));
+
+
+
       if (Math.abs(guess - targetnumber) <= 10) {
       	statusText = statusText + "Hot.  ";
-      }
-      else {
+       }
+       else {
       	statusText = statusText + "Cold.  ";
+      };
+     
+
+      if (guess === targetnumber) {
+      	statusText = "You got the number!!!";
+      	$('#playerGuessButton').attr('disabled',true);
       }
-      if (guess < targetnumber) {
-      	statusText = statusText + "Too low";
-      }
+      else if (guess < targetnumber) {
+      	statusText = "Too low.  ";
+        if (Math.abs(guess - targetnumber) <= 10) {
+      	 statusText = statusText + "  Hot!";
+       }
+       else {
+      	statusText = statusText + "  Cold:(";
+       }
+     }
       else {
-      	statusText = statusText + "Too high";
-      }
+      	statusText = "Too high";
+        if (Math.abs(guess - targetnumber) <= 10) {
+      	 statusText = statusText + "  Hot!";
+       }
+       else {
+      	statusText = statusText + "  Cold:(";
+       }
+      };
+
+     alert(statusText);
       $("#status").text(statusText);
 
      // Check and see if the game is still on
      if (counter===0) {
      	$("#status").text("Game over!");
      	$("#guess-count").text("Game over!");
+     	$('#playerGuessButton').attr('disabled',true);
      } 
 
        event.preventDefault();
